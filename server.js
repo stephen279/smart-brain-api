@@ -17,7 +17,9 @@ const db = knex({
 	 database : 'smart-brain'*/
 	  //from docs
 	  connectionString: process.env.DATABASE_URL,
-	  ssl: true,
+	  ssl: {
+      rejectUnauthorized: false
+    }
 	  
   }
 });
