@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
 const { response } = require('express');
+var session = require('express-session');
 
 //const baseURL = "http://localhost:3001/"
 
@@ -14,7 +15,17 @@ const db = knex({
   /*  host : 'protected-gorge-67490',
     user : 'ukgalxtnaedflh',
     password : '',
-	 database : 'smart-brain'*/
+	 database : 'smart-brain'
+	 
+	 ec2-54-157-100-65.compute-1.amazonaws.com
+	 database: d7eh0ncbgjqr8t
+	user: ukgalxtnaedflh
+5432
+59c9a7ef6a603ea37b1c8721ea761c468feeca1760bdd9fe8ca513db9a65c86e
+	 
+	 
+	 */
+	  
 	  //from docs
 	  connectionString: process.env.DATABASE_URL,
 	  ssl: {
@@ -47,18 +58,49 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(
+	session({
+ 
+	secret: 'secret123',
+	saveUninitialized: true,
+	resave: false,
+	cookie: {
+		httpOnly: true,
+		maxAge: 3600000
+		
+	}
+
+})
+);
+
+app.use((req, res, next) => {
+	console.log("inside");
+	//console.log(req.session);
+	next();
+})
+
 
 /*app.get('/', (req, res) => {
 	res.send(database.users);
 });*/
 
 app.get('/', (req, res) => {
-res.send("it's working!");
+
+	const { user } = req.session;
+	
+	console.log("inside and userId "+ user);
+	//req.session.user = "tom@m.com";
+	req.session.user = req.body.email;
+	console.log(req.session);
+	res.send("it's workingggg!");
+	//next();
 });
 
 
 
+
 app.post('/signin', (req, res) => {
+	console.log("inside signinhh");
 	db.select('email', 'hash')
 		.from('logins')
 		.where('email', '=', req.body.email)
@@ -66,10 +108,12 @@ app.post('/signin', (req, res) => {
 			const isValid = bcrypt.compareSync(req.body.password, data[0].hash);
 			console.log(isValid);
 			if (isValid) {
-				req.session.user = req.body.email;
+				console.log("inside signinhh more");
+			///	req.session.userId = req.body.email;
 				return db.select('*').from('users')
 					.where('email', '=', req.body.email)
 					.then(user => {
+						req.session.user = res.json(user[0]);
 						console.log(user);
 						res.json(user[0])
 					})
