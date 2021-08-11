@@ -22,6 +22,26 @@ const db = knex({
 	user: ukgalxtnaedflh
 5432
 59c9a7ef6a603ea37b1c8721ea761c468feeca1760bdd9fe8ca513db9a65c86e
+
+
+  host : 'ec2-54-157-100-65.compute-1.amazonaws.com',
+    user : 'ukgalxtnaedflh',
+    password : '59c9a7ef6a603ea37b1c8721ea761c468feeca1760bdd9fe8ca513db9a65c86e',
+	 database : 'd7eh0ncbgjqr8t'
+	 user: ukgalxtnaedflh
+
+
+	 const db = knex({
+  // connect to your own database here
+  client: 'pg',
+  connection: {
+    host : 'ec2-54-157-100-65.compute-1.amazonaws.com',
+    user : 'aneagoie',
+    password : '59c9a7ef6a603ea37b1c8721ea761c468feeca1760bdd9fe8ca513db9a65c86e',
+    database : 'd7eh0ncbgjqr8t'
+  }
+});
+	 
 	 
 	 
 	 */
@@ -231,6 +251,8 @@ app.get('/profile/:id', (req, res) => {
 });
 
 app.put('/image', (req, res) => {
+
+		console.log("inside signinhh");
 	const { id } = req.body;
 	db('users')
 		.where('id', '=', id)
