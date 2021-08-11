@@ -133,8 +133,8 @@ app.post('/signin', (req, res) => {
 				return db.select('*').from('users')
 					.where('email', '=', req.body.email)
 					.then(user => {
-					//	req.session.user = res.json(user[0]);
-					//	console.log(req.session.user);
+						req.session.user = res.json(user[0]);
+						console.log(req.session.user);
 					//	console.log(user);
 					//	res.json(user[0])
 					})
