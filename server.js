@@ -94,8 +94,8 @@ app.use(
 );
 
 app.use((req, res, next) => {
-	console.log("inside");
-	console.log(req.session);
+	console.log("inside req seeion -----------");
+	req.session;
 	next();
 })
 
