@@ -130,14 +130,14 @@ app.post('/signin', (req, res) => {
 			if (isValid) {
 				console.log("inside signinhh more");
 			///	req.session.userId = req.body.email;
-				req.session.user = res.json(user[0]);
+				//req.session.user = res.json(user[0]);
 				return db.select('*').from('users')
 					.where('email', '=', req.body.email)
 					.then(user => {
 						req.session.user = res.json(user[0]);
 						console.log(req.session.user);
-					//	console.log(user);
-					//	res.json(user[0])
+						console.log(user);
+						res.json(user[0])
 					})
 					.catch(err => res.status(400).json('unable to get user'))
 				
