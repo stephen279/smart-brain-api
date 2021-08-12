@@ -112,11 +112,13 @@ app.get('/', (req, res) => {
 	//req.session.user = "tom@m.com";
 	//req.session.user = req.body.email;
 	//console.log("check session is ---------"+req.session.user);
-	if (req.session.user != "") {
+
+	return condition ? session : Nosession;
+	/*if (req.session.user != "") {
 		res.send("session");
-	} else {
+	}else {
 		res.send("NoSession");
-	}
+	}*/
 	//next();
 	
 });
