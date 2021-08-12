@@ -135,7 +135,7 @@ app.post('/signin', (req, res) => {
 					.where('email', '=', req.body.email)
 					.then(user => {
 						req.session.user = res.json(user[0]);
-						console.log("session 1 --------"+req.session.user);
+						console.log("session 1 --------"+req.body.email;
 						console.log(user);
 						res.json(user[0])
 					})
