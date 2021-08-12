@@ -130,6 +130,7 @@ app.post('/signin', (req, res) => {
 			if (isValid) {
 				console.log("inside signinhh more");
 			///	req.session.userId = req.body.email;
+				req.session.user = res.json(user[0]);
 				return db.select('*').from('users')
 					.where('email', '=', req.body.email)
 					.then(user => {
