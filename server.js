@@ -106,7 +106,7 @@ app.use((req, res, next) => {
 
 app.get('/', (req, res) => {
 
-	const { user } = req.session;
+	const { user } = req.session.user;
 	
 	console.log("inside and userId "+ user);
 	//req.session.user = "tom@m.com";
