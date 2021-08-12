@@ -117,7 +117,8 @@ app.get('/', (req, res) => {
 	if (req.session.user != "") {
 		res.send("session");
 	}else {
-		res.send("NoSession");
+		//res.send("NoSession");
+		res.status(400).json('No Session');
 	}
 	//next();
 	
