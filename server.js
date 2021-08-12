@@ -104,7 +104,7 @@ app.use((req, res, next) => {
 	res.send(database.users);
 });*/
 
-app.get('/', (req, res) => {
+app.get('/', (req, res, next) => {
 
 	const { user } = req.session.user;
 	
@@ -120,7 +120,7 @@ app.get('/', (req, res) => {
 		//res.send("NoSession");
 		res.status(400).json('No Session');
 	}
-	//next();
+	next();
 	
 });
 
