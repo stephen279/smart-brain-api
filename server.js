@@ -94,7 +94,7 @@ app.use(
 );
 
 app.use((req, res, next) => {
-	console.log("inside req seeion -----------"=req.session.user);
+	console.log("inside req seeion -----------"+req.session.user);
 	req.session;
 	next();
 })
