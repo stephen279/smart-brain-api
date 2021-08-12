@@ -108,7 +108,7 @@ app.get('/', (req, res) => {
 
 	const { user } = req.session.user;
 	
-	console.log("inside and userId "+ user);
+	console.log("inside and userId "+ req.session.user);
 	//req.session.user = "tom@m.com";
 	req.session.user = req.body.email;
 	console.log("check session is ---------"+req.session.user);
