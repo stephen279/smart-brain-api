@@ -120,7 +120,8 @@ app.get('/', (req, res) => {
 	
 	//	if (!req.session.user) {
 		//res.redirect('/signin')
-			res.send("session");
+	//res.send("session");
+	res.status(200).json('session');
 	//} else {
 		//next();
 	//		res.send("NoSession");
