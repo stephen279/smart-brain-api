@@ -104,7 +104,16 @@ app.use((req, res, next) => {
 	res.send(database.users);
 });*/
 
-app.get('/', (req, res, next) => {
+const redirectlogin = (req, res) => {
+	if (!req.session.user) {
+		res.redirect('/signin')
+	} else {
+		next();
+	}
+
+}
+
+app.get('/', redirectlogin ,(req, res, next) => {
 
 	const { user } = req.session.user;
 	
@@ -114,13 +123,13 @@ app.get('/', (req, res, next) => {
 	//console.log("check session is ---------"+req.session.user);
 
 	//return condition ? session : Nosession;
-	if (req.session.user != "") {
+/*	if (req.session.user != "") {
 		res.send("session");
 	}else {
 		//res.send("NoSession");
 		res.status(400).json('No Session');
 	}
-	next();
+	next();*/
 	
 });
 
