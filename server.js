@@ -117,14 +117,14 @@ const redirectlogin = (req, res) => {
 app.get('/', (req, res) => {
 	console.log("inside and userId "+ req.session.user);
 
-	const { user } = req.session.user;
-		if (!req.session.user) {
+	
+	//	if (!req.session.user) {
 		//res.redirect('/signin')
 			res.send("session");
-	} else {
+	//} else {
 		//next();
-			res.send("NoSession");
-	}
+	//		res.send("NoSession");
+	//}
 	
 	
 	//req.session.user = "tom@m.com";
