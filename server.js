@@ -114,7 +114,7 @@ const redirectlogin = (req, res) => {
 
 }
 
-app.get('/', (req, res, next) => {
+app.get('/home', (req, res, next) => {
 	console.log("inside and userId "+ req.session.user);
 
 	const { user } = req.session.user;
