@@ -118,7 +118,7 @@ app.get('/', (req, res) => {
 	console.log("inside and userId "+ req.session.user);
 
 	
-	if (!req.session.user) {
+	if (req.session.user) {
 		//res.redirect('/signin')
 		//res.send("session");
 		res.status(200).json('session');
