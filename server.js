@@ -118,16 +118,16 @@ app.get('/', (req, res) => {
 	console.log("inside and userId "+ req.session.user);
 
 	
-	//	if (!req.session.user) {
+	if (!req.session.user) {
 		//res.redirect('/signin')
-	//res.send("session");
-	res.status(200).json('session');
-	//} else {
+		//res.send("session");
+		res.status(200).json('session');
+	} else {
 		//next();
-	//		res.send("NoSession");
-	//}
+		res.status(400).json('No session');
+		//}
 	
-	
+	}
 	//req.session.user = "tom@m.com";
 	//req.session.user = req.body.email;
 	//console.log("check session is ---------"+req.session.user);
