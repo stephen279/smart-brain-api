@@ -148,6 +148,7 @@ app.get('/', (req, res) => {
 
 app.post('/signin', (req, res) => {
 	req.session.user = req.body.email;
+	console.log("session1 user set --------"+req.session.user);
 	console.log("inside signinhh");
 	db.select('email', 'hash')
 		.from('logins')
@@ -165,7 +166,7 @@ app.post('/signin', (req, res) => {
 					.then(user => {
 						req.session.user = req.body.email;
 						console.log("session set --------"+req.session);
-						console.log("session user set --------"+req.session.user);
+						console.log("session2 user set --------"+req.session.user);
 						console.log(user);
 						//res.status(200).json('session set with '+req.session.user)
 						res.json(user[0])
