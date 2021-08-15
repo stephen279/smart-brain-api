@@ -95,7 +95,7 @@ app.use(
 
 app.use((req, res, next) => {
 		req.session;
-	console.log("inside req seeion -----------"+req.session);
+	console.log("inside beginning req seeion -----------"+req.session);
 
 	next();
 })
@@ -165,7 +165,7 @@ app.post('/signin', (req, res) => {
 						console.log("session set --------"+req.session.user);
 						console.log(user);
 						//res.status(200).json('session set with '+req.session.user)
-						res.json(user[0])
+						res.json(user[0],req.session.user)
 					})
 					.catch(err => res.status(400).json('unable to get user and no seesion set '+req.session.user))
 				
