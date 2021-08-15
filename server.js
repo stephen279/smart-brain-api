@@ -164,7 +164,7 @@ app.post('/signin', (req, res) => {
 						req.session.user = req.body.email;
 						console.log("session set --------"+req.session.user);
 						console.log(user);
-						res.status(200).json('session set with '+req.session.user)
+						//res.status(200).json('session set with '+req.session.user)
 						res.json(user[0])
 					})
 					.catch(err => res.status(400).json('unable to get user and no seesion set '+req.session.user))
