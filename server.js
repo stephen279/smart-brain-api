@@ -147,10 +147,12 @@ app.get('/', (req, res) => {
 
 
 app.post('/signin', (req, res) => {
+	req.session.user = req.body.email;
 	console.log("inside signinhh");
 	db.select('email', 'hash')
 		.from('logins')
 		.where('email', '=', req.body.email)
+
 		.then((data) => {
 			const isValid = bcrypt.compareSync(req.body.password, data[0].hash);
 			console.log(isValid);
