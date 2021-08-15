@@ -155,7 +155,7 @@ app.post('/signin', (req, res) => {
 			const isValid = bcrypt.compareSync(req.body.password, data[0].hash);
 			console.log(isValid);
 			if (isValid) {
-				console.log("inside signinhh more");
+				console.log("inside signinhh server valid");
 			///	req.session.userId = req.body.email;
 				//req.session.user = res.json(user[0]);
 				return db.select('*').from('users')
