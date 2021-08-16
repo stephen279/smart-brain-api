@@ -165,6 +165,8 @@ app.post('/signin', (req, res) => {
 	
 })
 
+
+/*
 app.get('/', (req, res) => {
 	console.log(req.session)
 	console.log("on home session object " + req.session.id);
@@ -187,7 +189,7 @@ app.get('/', (req, res) => {
 	}
 
 });
-
+*/
 	//req.session.user = "tom@m.com";
 	//req.session.user = req.body.email;
 	//console.log("check session is ---------"+req.session.user);
@@ -204,13 +206,13 @@ app.get('/', (req, res) => {
 	});
 	
 	
-	/*
 	
 	
+	*/
 	app.get('/', function(req, res){
-		if(req.session.page_views){
+		if(req.session.userid){
 			req.session.page_views++;
-			res.send("You visited this page " + req.session.page_views + " times");
+			res.send("You visited this page " + req.session.userid + " times");
 		} else {
 			req.session.page_views = 1;
 			res.send("Welcome to this page for the first time!");
@@ -218,7 +220,7 @@ app.get('/', (req, res) => {
 	});
 	
 	
-	*/
+	
 	
 
 
