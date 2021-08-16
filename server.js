@@ -166,7 +166,6 @@ app.post('/signin', (req, res) => {
 })
 
 
-/*
 app.get('/', (req, res) => {
 	console.log(req.session)
 	console.log("on home session object " + req.session.id);
@@ -189,7 +188,7 @@ app.get('/', (req, res) => {
 	}
 
 });
-*/
+
 	//req.session.user = "tom@m.com";
 	//req.session.user = req.body.email;
 	//console.log("check session is ---------"+req.session.user);
@@ -208,7 +207,7 @@ app.get('/', (req, res) => {
 	
 	
 	
-	*/
+	
 	app.get('/', function(req, res){
 		if(req.session.userid){
 			req.session.page_views++;
