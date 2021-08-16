@@ -124,8 +124,7 @@ app.post('/signin', (req, res) => {
 	  //userId=req.session.userid;
 	//req.session.userid = user;
 
-	session = req.session;
-	session.userid = "stephennew";
+	
        // console.log(req.session)
        // res.send(`Hey there, welcome <a href=\'/logout'>click to logout</a>`);
     
@@ -148,8 +147,11 @@ app.post('/signin', (req, res) => {
 					.then(user => {
 						//req.session.id = "22222222";
 						console.log("sessionid set --------"+req.sessionID);
-						console.log("session2 userID set --------"+req.session.userid);
+						console.log("session2 userID set --------" + req.session.userid);
+						session = req.session;
+	session.userid = "stephennew";
 						console.log(user);
+						
 						//res.status(200).json('session set with '+req.session.user)
 						res.json(user[0])
 					})
