@@ -94,7 +94,7 @@ app.use(
 );
 
 app.use((req, res,next) => {
-		//req.session;
+		req.session;
 	//console.log("inside beginning req seeion -----------"+req.session);
 
 	next();
@@ -129,7 +129,7 @@ app.post('/signin', (req, res) => {
        // res.send(`Hey there, welcome <a href=\'/logout'>click to logout</a>`);
     
 
-	console.log("on sign in session1 user set --------"+req.session.id);
+	//console.log("on sign in session1 user set --------"+req.session.id);
 	console.log("inside signinhh");
 	db.select('email', 'hash')
 		.from('logins')
