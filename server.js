@@ -128,7 +128,7 @@ app.post('/signin', (req, res) => {
        // console.log(req.session)
        // res.send(`Hey there, welcome <a href=\'/logout'>click to logout</a>`);
     
-/*
+
 	console.log("on sign in session1 user set --------"+req.session.id);
 	console.log("inside signinhh");
 	db.select('email', 'hash')
@@ -159,7 +159,6 @@ app.post('/signin', (req, res) => {
 			}
 		})
 		.catch(err => res.status(400).json('wrong password credentials'));
-		*/
 	
 })
 
