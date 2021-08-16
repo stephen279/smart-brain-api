@@ -194,7 +194,7 @@ app.get('/signout', (req, res) => {
 	 req.session.destroy(null);
 	const user = "11111";
 	  //userId=req.session.userid;
-	req.session.id = user;
+	//req.session.id = user;
 
 	console.log("session after logout user is--------"+req.session);
 	console.log("inside lougout");
