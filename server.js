@@ -153,8 +153,8 @@ app.post('/signin', (req, res) => {
 						session.save();
 						console.log(user);
 						
-						res.status(200).json('session set with '+req.session.userid)
-						//res.json(user[0])
+						//res.status(200).json('session set with '+req.session.userid)
+						res.json(user[0])
 						//res.send("session ok" + req.session.userid + " ");
 					})
 					.catch(err => res.status(400).json('unable to get user and no seesion set '+req.session.user))
