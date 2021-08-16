@@ -152,6 +152,11 @@ app.post('/signin', (req, res) => {
 	const user = "11111";
 	  //userId=req.session.userid;
 	req.session.userid = user;
+	  session=req.session;
+        session.userid="stephen";
+        console.log(req.session)
+        res.send(`Hey there, welcome <a href=\'/logout'>click to logout</a>`);
+    
 
 	console.log("session1 user set --------"+req.session);
 	console.log("inside signinhh");
