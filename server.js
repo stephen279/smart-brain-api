@@ -93,12 +93,12 @@ app.use(
 })
 );
 
-app.use((req, res, next) => {
+/*app.use((req, res, next) => {
 	//	req.session;
 	//console.log("inside beginning req seeion -----------"+req.session);
 
 	next();
-})
+})*/
 
 
 /*app.get('/', (req, res) => {
