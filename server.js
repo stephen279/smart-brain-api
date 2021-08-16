@@ -114,35 +114,6 @@ const redirectlogin = (req, res) => {
 
 }
 
-app.get('/', (req, res) => {
-	console.log("inside session object " + req.session.id);
-		console.log("inside and session userid "+ req.session.userid);
-
-	
-	if (req.session.id) {
-		//res.redirect('/signin')
-		//res.send("session");
-		res.status(200).json('session');
-	} else {
-		//next();
-		res.status(400).json('No session');
-		//}
-	
-	}
-	//req.session.user = "tom@m.com";
-	//req.session.user = req.body.email;
-	//console.log("check session is ---------"+req.session.user);
-
-	//return condition ? session : Nosession;
-/*	if (req.session.user != "") {
-		res.send("session");
-	}else {
-		//res.send("NoSession");
-		res.status(400).json('No Session');
-	}
-	next();*/
-	
-});
 
 
 
@@ -190,6 +161,37 @@ app.post('/signin', (req, res) => {
 		.catch(err => res.status(400).json('wrong password credentials'));
 	
 })
+
+app.get('/', (req, res) => {
+	console.log("inside session object " + req.session.id);
+		console.log("inside and session userid "+ req.session.userid);
+
+	
+	if (req.session.id) {
+		//res.redirect('/signin')
+		//res.send("session");
+		res.status(200).json('session');
+	} else {
+		//next();
+		res.status(400).json('No session');
+		//}
+	
+	}
+	//req.session.user = "tom@m.com";
+	//req.session.user = req.body.email;
+	//console.log("check session is ---------"+req.session.user);
+
+	//return condition ? session : Nosession;
+/*	if (req.session.user != "") {
+		res.send("session");
+	}else {
+		//res.send("NoSession");
+		res.status(400).json('No Session');
+	}
+	next();*/
+	
+});
+
 
 
 
