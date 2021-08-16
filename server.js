@@ -150,7 +150,9 @@ app.get('/', (req, res) => {
 app.post('/signin', (req, res) => {
 	//req.session = req.body.email;
 	const user = "11111";
-	user=req.session.admin;
+	  //userId=req.session.userid;
+	req.session.userid = user;
+
 	console.log("session1 user set --------"+req.session);
 	console.log("inside signinhh");
 	db.select('email', 'hash')
