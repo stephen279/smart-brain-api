@@ -191,7 +191,8 @@ app.post('/signin', (req, res) => {
 app.get('/signout', (req, res) => {
 	//req.session = req.body.email;
 
-	 req.session.destroy(null);
+	req.session.destroy();
+	//req.session.destroy();
 	const user = "11111";
 	  //userId=req.session.userid;
 	//req.session.id = user;
