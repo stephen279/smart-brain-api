@@ -93,12 +93,12 @@ app.use(
 })
 );
 
-/*app.use((req, res, next) => {
-	//	req.session;
+app.use((req, res, next) => {
+		req.session;
 	//console.log("inside beginning req seeion -----------"+req.session);
 
 	next();
-})*/
+})
 
 
 /*app.get('/', (req, res) => {
@@ -119,7 +119,7 @@ app.get('/', (req, res) => {
 		console.log("inside and session userid "+ req.session.userid);
 
 	
-	if (req.session.id) {
+	if (req.session.userid) {
 		//res.redirect('/signin')
 		//res.send("session");
 		res.status(200).json('session');
