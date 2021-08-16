@@ -165,10 +165,10 @@ app.post('/signin', (req, res) => {
 app.get('/', (req, res) => {
 	console.log(req.session)
 	console.log("on home session object " + req.session.id);
-		console.log("inside and session userid "+ req.session.userid);
+	console.log("inside and session userid " + req.session.userid);
 
-		  session=req.session;
-        session.userid="stephen";
+	session = req.session;
+	session.userid = "stephen";
 	
 	if (req.session.userid) {
 		//res.redirect('/signin')
@@ -182,37 +182,42 @@ app.get('/', (req, res) => {
 		//}
 	
 	}
+
+});
+
 	//req.session.user = "tom@m.com";
 	//req.session.user = req.body.email;
 	//console.log("check session is ---------"+req.session.user);
 
 	//return condition ? session : Nosession;
-/*	if (req.session.user != "") {
-		res.send("session");
-	}else {
-		//res.send("NoSession");
-		res.status(400).json('No Session');
-	}
-	next();
+	/*	if (req.session.user != "") {
+			res.send("session");
+		}else {
+			//res.send("NoSession");
+			res.status(400).json('No Session');
+		}
+		next();
+		
+	});
 	
-});
+	
+	/*
+	
+	
+	app.get('/', function(req, res){
+		if(req.session.page_views){
+			req.session.page_views++;
+			res.send("You visited this page " + req.session.page_views + " times");
+		} else {
+			req.session.page_views = 1;
+			res.send("Welcome to this page for the first time!");
+		}
+	});
+	
+	
+	*/
+	
 
-
-/*
-
-
-app.get('/', function(req, res){
-   if(req.session.page_views){
-      req.session.page_views++;
-      res.send("You visited this page " + req.session.page_views + " times");
-   } else {
-      req.session.page_views = 1;
-      res.send("Welcome to this page for the first time!");
-   }
-});
-
-
-*/
 
 app.post('/signout', (req, res) => {
 	//req.session = req.body.email;
