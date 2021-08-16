@@ -86,7 +86,7 @@ app.use(
 	resave: false,
 	cookie: {
 		httpOnly: true,
-		maxAge: 3600000
+		maxAge: 36000000
 		
 	}
 
@@ -161,7 +161,7 @@ app.post('/signin', (req, res) => {
 		.catch(err => res.status(400).json('wrong password credentials'));
 	
 })
-
+/*
 app.get('/', (req, res) => {
 	console.log(req.session)
 	console.log("on home session object " + req.session.id);
@@ -189,8 +189,21 @@ app.get('/', (req, res) => {
 		//res.send("NoSession");
 		res.status(400).json('No Session');
 	}
-	next();*/
+	next();
 	
+});
+
+*/
+
+
+app.get('/', function(req, res){
+   if(req.session.page_views){
+      req.session.page_views++;
+      res.send("You visited this page " + req.session.page_views + " times");
+   } else {
+      req.session.page_views = 1;
+      res.send("Welcome to this page for the first time!");
+   }
 });
 
 
