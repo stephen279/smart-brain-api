@@ -106,7 +106,7 @@ app.use((req, res, next) => {
 });*/
 
 const redirectlogin = (req, res) => {
-	if (!req.session.user) {
+	if (!req.session) {
 		res.redirect('/signin')
 	} else {
 		next();
@@ -115,7 +115,7 @@ const redirectlogin = (req, res) => {
 }
 
 app.get('/', (req, res) => {
-	console.log("inside and userId "+ req.session.user);
+	console.log("inside and userId "+ req.session);
 
 	
 	if (req.session.user) {
