@@ -188,7 +188,7 @@ app.post('/signin', (req, res) => {
 
 
 
-app.get('/signout', (req, res) => {
+app.post('/signout', (req, res) => {
 	//req.session = req.body.email;
 
 	req.session.destroy();
