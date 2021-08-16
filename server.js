@@ -165,7 +165,7 @@ app.post('/signin', (req, res) => {
 				return db.select('*').from('users')
 					.where('email', '=', req.body.email)
 					.then(user => {
-						req.session = user;
+						req.session.id = "22222222";
 						console.log("sessionid set --------"+req.session.id);
 						console.log("session2 user set --------"+req.session.user);
 						console.log(user);
