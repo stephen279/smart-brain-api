@@ -95,7 +95,7 @@ app.use(
 
 app.use((req, res, next) => {
 		req.session;
-	console.log("inside beginning req seeion -----------"+req.session.user);
+	console.log("inside beginning req seeion -----------"+req.session);
 
 	next();
 })
@@ -164,7 +164,7 @@ app.post('/signin', (req, res) => {
 				return db.select('*').from('users')
 					.where('email', '=', req.body.email)
 					.then(user => {
-						req.session.user = req.body.email;
+						req.session.user = user;
 						console.log("session set --------"+req.session);
 						console.log("session2 user set --------"+req.session.user);
 						console.log(user);
