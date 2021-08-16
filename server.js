@@ -200,6 +200,7 @@ app.post('/signout', (req, res) => {
 
 	console.log("session after logout user is--------"+req.session);
 	console.log("inside lougout");
+	res.json("signedout");
 
 	
 	
