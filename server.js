@@ -116,7 +116,7 @@ const redirectlogin = (req, res) => {
 
 app.get('/', (req, res) => {
 	console.log("inside session object " + req.session.id);
-		console.log("inside and session user "+ req.session.id);
+		console.log("inside and session user "+ req.session.admin);
 
 	
 	if (req.session.id) {
@@ -149,6 +149,8 @@ app.get('/', (req, res) => {
 
 app.post('/signin', (req, res) => {
 	//req.session = req.body.email;
+	const user = "";
+	"11111111111111111"=req.session.admin;
 	console.log("session1 user set --------"+req.session);
 	console.log("inside signinhh");
 	db.select('email', 'hash')
