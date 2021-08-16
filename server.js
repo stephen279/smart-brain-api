@@ -116,7 +116,7 @@ const redirectlogin = (req, res) => {
 
 app.get('/', (req, res) => {
 	console.log("inside session object " + req.session.id);
-		console.log("inside and session user "+ req.session.admin);
+		console.log("inside and session user "+ req.session.userid);
 
 	
 	if (req.session.id) {
