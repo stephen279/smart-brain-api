@@ -125,11 +125,11 @@ app.post('/signin', (req, res) => {
 	//req.session.userid = user;
 	  session=req.session;
         session.userid="stephen";
-        console.log(req.session)
+       // console.log(req.session)
        // res.send(`Hey there, welcome <a href=\'/logout'>click to logout</a>`);
     
 
-	console.log("session1 user set --------"+req.session);
+	console.log("on sign in session1 user set --------"+req.session.id);
 	console.log("inside signinhh");
 	db.select('email', 'hash')
 		.from('logins')
@@ -163,7 +163,8 @@ app.post('/signin', (req, res) => {
 })
 
 app.get('/', (req, res) => {
-	console.log("inside session object " + req.session.id);
+	console.log(req.session)
+	console.log("on home session object " + req.session.id);
 		console.log("inside and session userid "+ req.session.userid);
 
 	
