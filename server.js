@@ -196,6 +196,7 @@ app.get('/signout', (req, res) => {
 	const user = "11111";
 	  //userId=req.session.userid;
 	//req.session.id = user;
+	//req.session = null // Deletes the cookie.
 
 	console.log("session after logout user is--------"+req.session);
 	console.log("inside lougout");
