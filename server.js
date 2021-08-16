@@ -161,12 +161,14 @@ app.post('/signin', (req, res) => {
 		.catch(err => res.status(400).json('wrong password credentials'));
 	
 })
-/*
+
 app.get('/', (req, res) => {
 	console.log(req.session)
 	console.log("on home session object " + req.session.id);
 		console.log("inside and session userid "+ req.session.userid);
 
+		  session=req.session;
+        session.userid="stephen";
 	
 	if (req.session.userid) {
 		//res.redirect('/signin')
@@ -193,7 +195,8 @@ app.get('/', (req, res) => {
 	
 });
 
-*/
+
+/*
 
 
 app.get('/', function(req, res){
@@ -207,7 +210,7 @@ app.get('/', function(req, res){
 });
 
 
-
+*/
 
 app.post('/signout', (req, res) => {
 	//req.session = req.body.email;
