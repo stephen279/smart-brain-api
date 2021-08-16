@@ -173,10 +173,12 @@ app.get('/', (req, res) => {
 	if (req.session.userid) {
 		//res.redirect('/signin')
 		//res.send("session");
-		res.status(200).json('session');
+		res.send("session ok" + req.session.userid + " ");
+		//res.status(200).json('session');
 	} else {
 		//next();
 		res.status(400).json('No session');
+		res.send("session NO" + req.session.userid + " ");
 		//}
 	
 	}
