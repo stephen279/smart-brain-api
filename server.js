@@ -185,6 +185,23 @@ app.post('/signin', (req, res) => {
 		.catch(err => res.status(400).json('wrong password credentials'));
 	
 })
+
+
+
+app.post('/signout', (req, res) => {
+	//req.session = req.body.email;
+
+	 req.session.destroy(null);
+	const user = "11111";
+	  //userId=req.session.userid;
+	req.session.id = user;
+
+	console.log("session after logout user is--------"+req.session);
+	console.log("inside lougout");
+
+	
+	
+})
 	
 	
   /*if (req.body.email === database.users[0].email && req.body.passwords) {
