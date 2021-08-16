@@ -93,12 +93,12 @@ app.use(
 })
 );
 
-/*app.use((req, res) => {
+app.use((req, res,next) => {
 		//req.session;
 	//console.log("inside beginning req seeion -----------"+req.session);
 
-	//next();
-})*/
+	next();
+})
 
 
 /*app.get('/', (req, res) => {
@@ -128,7 +128,7 @@ app.post('/signin', (req, res) => {
        // console.log(req.session)
        // res.send(`Hey there, welcome <a href=\'/logout'>click to logout</a>`);
     
-
+/*
 	console.log("on sign in session1 user set --------"+req.session.id);
 	console.log("inside signinhh");
 	db.select('email', 'hash')
@@ -159,16 +159,17 @@ app.post('/signin', (req, res) => {
 			}
 		})
 		.catch(err => res.status(400).json('wrong password credentials'));
+		*/
 	
 })
 
 app.get('/', (req, res) => {
 	console.log(req.session)
 	console.log("on home session object " + req.session.id);
-	console.log("inside and session userid " + req.session.userid);
+	console.log("inside and session userid " + req.session.user);
 
-	session = req.session;
-	session.userid = "stephen";
+	//session = req.session;
+	//session.userid = "stephennew";
 	
 	if (req.session.userid) {
 		//res.redirect('/signin')
