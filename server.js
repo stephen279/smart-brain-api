@@ -154,7 +154,13 @@ app.post('/signin', (req, res) => {
 					//	console.log("session2 userID set --------" + req.session.userid);
 						session = req.session;
 						session.userid = "stephennew";
-						session.save();
+						session.save(function () {
+							
+
+							console.log("inside svae function");
+						}
+						
+						);
 						console.log(user);
 						console.log(session.userid);
 						
