@@ -86,8 +86,8 @@ app.use(
 	resave: false,
 	cookie: {
 		httpOnly: true,
-		//secure: NODE_ENV === 'production',
-		secure: false,
+		secure: NODE_ENV === 'production',
+	//	secure: false,
 		maxAge: 36000000,
 		path: '/'
 	
