@@ -89,6 +89,7 @@ app.use(
 		//secure: NODE_ENV === 'production',
 		secure: false,
 		maxAge: 36000000,
+		path: '/'
 	
 		
 	}
