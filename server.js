@@ -234,7 +234,7 @@ app.get('/', (req, res) => {
 	});
 	
 	
-	
+	*/
 	
 
 
@@ -257,7 +257,8 @@ app.post('/signout', (req, res) => {
 	
 	
 })
-	
+
+
 	
   /*if (req.body.email === database.users[0].email && req.body.passwords) {
     res.json('success');
