@@ -194,6 +194,7 @@ app.get('/', (req, res) => {
 		//res.send("session");
 		res.send("session ok" + req.session.userid + " ");
 		//res.status(200).json('session');
+		console.log(res.send("session ok" + req.session.userid + " "));
 	} else {
 		//next();
 		//res.status(400).json('No session');
