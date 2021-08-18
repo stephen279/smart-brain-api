@@ -189,7 +189,7 @@ app.get('/', (req, res) => {
 	//session = req.session;
 	//session.userid = "stephennew";
 	
-	if (req.session.userid) {
+	if (req.session.useruid) {
 		//res.redirect('/signin')
 		//res.send("session");
 		res.send("session ok" + req.session.userid + " ");
