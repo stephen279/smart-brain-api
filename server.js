@@ -180,7 +180,7 @@ app.post('/signin', (req, res) => {
 	
 })
 
-
+/*
 app.get('/', (req, res) => {
 	console.log(req.session)
 	console.log("on home session object " + req.session.id);
@@ -203,7 +203,7 @@ app.get('/', (req, res) => {
 	
 	}
 
-});
+});*/
 
 	//req.session.user = "tom@m.com";
 	//req.session.user = req.body.email;
