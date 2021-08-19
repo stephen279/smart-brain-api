@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
 const { response } = require('express');
-const store = new sesssion.MemoryStore();
 var session = require('express-session');
 
 //const baseURL = "http://localhost:3001/"
@@ -83,18 +82,15 @@ app.set('trust proxy', 1)
 app.use(session({
   secret: 'secret',
   resave: false,
-	secure: false,
-  store,
+  secure: false,
+  
   cookie: {
     maxAge: 24 * 60 * 60 * 365 * 1000
   }
 }))
 
 
-app.use((req, res, next) => {
-	  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-
+app.use((req, res,next) => {
 		req.session;
 	//console.log("inside beginning req seeion -----------"+req.session);
 
@@ -103,7 +99,6 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
 
 
 /*app.get('/', (req, res) => {
@@ -180,8 +175,8 @@ app.post('/signin', (req, res) => {
 
 
 
-app.get('/' ,(req, res) => {
-	console.log(req.session)
+app.get('/' ,authorizedUser,(req, res) => {
+	//console.log(req.session)
 	console.log("sessionID beginning set --------"+req.sessionID);
 	console.log("on home session object " + req.session.id);
 	console.log("inside and session userid " + req.session.userid);
@@ -210,11 +205,10 @@ app.get('/' ,(req, res) => {
 
 
 function authorizedUser(req, res, next) {
-	
   // Check for the authorized property within the session
 	if (req.session.authenticated) {
 		// next middleware function is invoked
-		return next();
+		next();
 	}
   else {
     res.status(403).json({ msg: "You're not authorized to view this page" });
