@@ -197,7 +197,8 @@ app.get('/', authorizedUser ,(req, res) => {
 	
 	}*/
 
-	 res.render("home", { user: req.session.user });
+//	 res.render("home", { user: req.session.user });
+	res.send("session ok" + req.session.user+ " ");
 
 });
 
