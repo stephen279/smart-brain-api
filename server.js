@@ -205,7 +205,7 @@ app.get('/' ,authorizedUser,(req, res) => {
 
 function authorizedUser(req, res, next) {
   // Check for the authorized property within the session
-	if (req.session.authorized) {
+	if (!req.session.authorized) {
 		// next middleware function is invoked
 		next();
 	}
