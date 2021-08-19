@@ -197,8 +197,7 @@ app.get('/', authorizedUser ,(req, res) => {
 	
 	}*/
 
-//	 res.render("home", { user: req.session.user });
-	res.send("session ok" + req.session.user+ " ");
+	 res.render("/", { user: req.session.user });
 
 });
 
@@ -211,7 +210,7 @@ function authorizedUser(req, res, next) {
 	}
   else {
     res.status(403).json({ msg: "You're not authorized to view this page" });
-	  }
+	  
 	}
 };
 
