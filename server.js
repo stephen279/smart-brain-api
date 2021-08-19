@@ -201,7 +201,7 @@ app.get('/', (req, res) => {
 	} else {
 		//next();
 		//res.status(400).json('No session');
-	//	res.send("session NO" + req.session.userid + " ");
+		res.send("session NO" + req.session.userid + " ");
 		//}
 	
 	}
