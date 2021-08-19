@@ -197,7 +197,10 @@ app.get('/', (req, res) => {
 */
 
 app.get('/', (req, res) => {
-  if (req.session.views) {
+	if (req.session.views) {
+		console.log(req.session.views);
+		console.log(req.sessionID);
+		
     req.session.views++;
   }
   else {
