@@ -168,7 +168,7 @@ app.post('/signin', (req, res) => {
 })
 
 
-/*
+
 
 app.get('/', (req, res) => {
 	//console.log(req.session)
@@ -195,8 +195,8 @@ app.get('/', (req, res) => {
 
 });
 
-*/
 
+/*
 app.get('/', (req, res) => {
 	if (req.session.views) {
 		req.session.userid = "test";
