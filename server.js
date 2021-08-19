@@ -174,7 +174,7 @@ app.post('/signin', (req, res) => {
 
 
 
-app.get('/' ,(req, res) => {
+app.get('/' ,authorizedUser,(req, res) => {
 	//console.log(req.session)
 	console.log("sessionID beginning set --------"+req.sessionID);
 	console.log("on home session object " + req.session.id);
