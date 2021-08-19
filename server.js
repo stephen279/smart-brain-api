@@ -83,12 +83,13 @@ app.use(
  
 	secret: 'secret123',
 	saveUninitialized: true,
-	resave: false,
+	resave: true,
 	cookie: {
 		httpOnly: true,
 	//	secure: NODE_ENV === 'production',
 		secure: false,
 		maxAge: 36000000,
+
 		path: '/'
 	
 		
