@@ -174,7 +174,7 @@ app.post('/signin', (req, res) => {
 
 
 
-app.get('/', (req, res) => {
+app.get('/', authorizedUser ,(req, res) => {
 	//console.log(req.session)
 	console.log("sessionID beginning set --------"+req.sessionID);
 	console.log("on home session object " + req.session.id);
@@ -182,7 +182,7 @@ app.get('/', (req, res) => {
 
 	//session = req.session;
 	//session.userid = "stephennew";
-	
+	/*
 	if (req.session.userid) {
 		//res.redirect('/signin')
 		//res.send("session");
@@ -195,9 +195,24 @@ app.get('/', (req, res) => {
 		//res.send("session NO" + req.session.userid + " ");
 		//}
 	
-	}
+	}*/
+
+	 res.render("home", { user: req.session.user });
 
 });
+
+
+function authorizedUser(req, res, next) {
+  // Check for the authorized property within the session
+	if (req.session.authorized) {
+		// next middleware function is invoked
+		res.next();
+	}
+  else {
+    res.status(403).json({ msg: "You're not authorized to view this page" });
+	  }
+	}
+};
 
 
 /*
