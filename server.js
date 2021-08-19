@@ -152,7 +152,7 @@ app.post('/signin', (req, res) => {
 						//req.session.id = "22222222";
 					//	console.log("sessionid set --------"+req.sessionID);
 					//	console.log("session2 userID set --------" + req.session.userid);
-					
+					req.session.userid = req.body.email;
 					
 						res.status(200).json('session set with '+req.session.userid)
 					//	res.json(user[0])
