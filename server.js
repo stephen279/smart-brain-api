@@ -173,7 +173,8 @@ app.post('/signin', (req, res) => {
 
 
 app.get('/', (req, res) => {
-	console.log(req.session)
+	//console.log(req.session)
+	console.log("sessionID beginning set --------"+req.sessionID);
 	console.log("on home session object " + req.session.id);
 	console.log("inside and session userid " + req.session.userid);
 
