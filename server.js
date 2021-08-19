@@ -207,7 +207,7 @@ function authorizedUser(req, res, next) {
   // Check for the authorized property within the session
 	if (req.session.authorized) {
 		// next middleware function is invoked
-		res.next();
+		next();
 	}
   else {
     res.status(403).json({ msg: "You're not authorized to view this page" });
