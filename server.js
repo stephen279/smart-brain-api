@@ -159,6 +159,9 @@ app.post('/signin', (req, res) => {
 							
 
 							console.log("inside svae function");
+							
+						session.userid = "stephennew1";
+						session.send
 						}
 						
 						);
