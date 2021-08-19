@@ -192,7 +192,7 @@ app.get('/', (req, res) => {
 	//session = req.session;
 	//session.userid = "stephennew";
 	
-	if (req.session.userid) {
+	if (req.session.userid != "") {
 		//res.redirect('/signin')
 		//res.send("session");
 		res.send("session ok" + req.session.userid + " ");
