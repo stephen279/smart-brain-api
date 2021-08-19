@@ -152,26 +152,11 @@ app.post('/signin', (req, res) => {
 						//req.session.id = "22222222";
 					//	console.log("sessionid set --------"+req.sessionID);
 					//	console.log("session2 userID set --------" + req.session.userid);
-						session = req.session;
-						session.userid = "stephennew";
-						session.send
-						session.save(function () {
-							
-
-							console.log("inside svae function");
-							
-						session.userid = "stephennew1";
-						session.send
-						}
-						
-						);
-						console.log(user);
-						console.log(session.userid);
-						
+					
+					
 						//res.status(200).json('session set with '+req.session.userid)
 						res.json(user[0])
-						res.session.send("session sent" + session.userid + " ");
-						res.redirect("/");
+					
 					})
 					.catch(err => res.status(400).json('unable to get user and no seesion set '+req.session.user))
 				
