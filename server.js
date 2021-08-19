@@ -91,7 +91,10 @@ app.use(session({
 }))
 
 
-app.use((req, res,next) => {
+app.use((req, res, next) => {
+	  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+
 		req.session;
 	//console.log("inside beginning req seeion -----------"+req.session);
 
@@ -100,6 +103,7 @@ app.use((req, res,next) => {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 
 /*app.get('/', (req, res) => {
@@ -206,6 +210,7 @@ app.get('/' ,authorizedUser,(req, res) => {
 
 
 function authorizedUser(req, res, next) {
+	
   // Check for the authorized property within the session
 	if (req.session.authenticated) {
 		// next middleware function is invoked
