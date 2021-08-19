@@ -78,32 +78,24 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(
-	session({
- 
-	secret: 'secret123',
-	saveUninitialized: true,
-	resave: true,
-	cookie: {
-		httpOnly: true,
-	//	secure: NODE_ENV === 'production',
-		secure: false,
-		maxAge: 36000000,
-
-		path: '/'
-	
-		
-	}
-
-})
-);
+app.set('trust proxy', 1)
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  cookie: {
+    maxAge: 24 * 60 * 60 * 365 * 1000
+  }
+}))
 
 app.use((req, res,next) => {
-	//	req.session;
+		req.session;
 	//console.log("inside beginning req seeion -----------"+req.session);
 
 	next();
 })
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 /*app.get('/', (req, res) => {
@@ -156,7 +148,9 @@ app.post('/signin', (req, res) => {
 						//req.session = user[0];
 						req.session.userid = req.body.email;
 						//console.log("sessionID end set --------" + req.sessionID);
-						console.log("sessionuserid end set --------"+req.session.userid);
+						console.log("sessionuserid end set --------" + req.session.userid);
+						
+						
 					
 					//	res.status(200).json('session set with '+req.sessionID)
 						res.json(user[0]);
@@ -172,6 +166,8 @@ app.post('/signin', (req, res) => {
 	
 })
 
+
+/*
 
 app.get('/', (req, res) => {
 	//console.log(req.session)
@@ -197,6 +193,18 @@ app.get('/', (req, res) => {
 	}
 
 });
+
+*/
+
+app.get('/', (req, res) => {
+  if (req.session.views) {
+    req.session.views++;
+  }
+  else {
+    req.session.views = 1;
+  }
+  res.send(`${req.session.views} views`);
+})
 
 	//req.session.user = "tom@m.com";
 	//req.session.user = req.body.email;
