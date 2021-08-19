@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
 const { response } = require('express');
+const store = new sesssion.MemoryStore();
 var session = require('express-session');
 
 //const baseURL = "http://localhost:3001/"
@@ -82,7 +83,8 @@ app.set('trust proxy', 1)
 app.use(session({
   secret: 'secret',
   resave: false,
-  secure: false,
+	secure: false,
+  store,
   cookie: {
     maxAge: 24 * 60 * 60 * 365 * 1000
   }
