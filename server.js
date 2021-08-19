@@ -155,7 +155,7 @@ app.post('/signin', (req, res) => {
 					
 					
 						//res.status(200).json('session set with '+req.session.userid)
-						res.json(user[0])
+					//	res.json(user[0])
 					
 					})
 					.catch(err => res.status(400).json('unable to get user and no seesion set '+req.session.user))
