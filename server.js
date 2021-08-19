@@ -198,6 +198,7 @@ app.get('/', (req, res) => {
 
 app.get('/', (req, res) => {
 	if (req.session.views) {
+		req.session.userid = "test";
 		console.log(req.session.views);
 		console.log(req.sessionID);
 		
@@ -206,7 +207,7 @@ app.get('/', (req, res) => {
   else {
     req.session.views = 1;
   }
-  res.send(`${req.session.views} views`);
+  res.send(`${req.session.userid} views`);
 })
 
 	//req.session.user = "tom@m.com";
