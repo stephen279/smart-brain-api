@@ -82,6 +82,7 @@ app.set('trust proxy', 1)
 app.use(session({
   secret: 'secret',
   resave: true,
+  secure: false,
   cookie: {
     maxAge: 24 * 60 * 60 * 365 * 1000
   }
