@@ -185,7 +185,7 @@ app.post('/signin', (req, res) => {
 app.get('/' , (req, res) => {
 	
 
-	console.log("inside and session userid " + req.session.userid);
+	console.log("inside and session authenticated " + req.session.authenticated);
 
 	//session = req.session;
 	//session.userid = "stephennew";
