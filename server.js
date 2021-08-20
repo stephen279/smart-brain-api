@@ -6,7 +6,6 @@ const knex = require('knex');
 const { response } = require('express');
 var session = require('express-session');
 
-
 //const baseURL = "http://localhost:3001/"
 
 const db = knex({
@@ -164,16 +163,10 @@ app.post('/signin', (req, res) => {
 						
 						req.session.authenticated = true;
 						req.session.user = req.body.email;
-						req.session.save();
+					
 
 						console.log(req.session);
-						 req.session.save((err) => {
-        if (err) {
-            return next(err);
-        }
-
-        res.status(200).send('OK');
-    });
+						req.session.save();
 						// res.redirect("/home");
       			//	res.redirect("/shop");
 					
