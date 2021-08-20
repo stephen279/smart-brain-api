@@ -141,7 +141,7 @@ app.post('/signin',  (req, res) => {
   
  
 
-	console.log("inside signinhh");
+
 	db.select('email', 'hash')
 		.from('logins')
 		.where('email', '=', req.body.email)
@@ -168,7 +168,7 @@ app.post('/signin',  (req, res) => {
 						req.session.user = req.body.email;
 					
 
-						console.log(req.session);
+						console.log("session inside /signin"+req.session);
 						req.session.save();
 						// res.redirect("/home");
       			//	res.redirect("/shop");
@@ -198,7 +198,7 @@ app.post('/signin',  (req, res) => {
 app.get('/' , (req, res) => {
 	
 
-	console.log("inside and session userid " + req.session.authenticated);
+	console.log("inside home route and session userauth " + req.session.authenticated);
 
 	//session = req.session;
 	//session.userid = "stephennew";
