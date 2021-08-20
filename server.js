@@ -174,7 +174,7 @@ app.post('/signin', (req, res) => {
 
 
 
-app.get('/', (req, res) => {
+app.get('/', ensureAuthentication , (req, res) => {
 	//console.log(req.session)
 	console.log("sessionID beginning set --------"+req.sessionID);
 	console.log("on home session object " + req.session.id);
@@ -199,6 +199,14 @@ app.get('/', (req, res) => {
 
 });
 
+function ensureAuthentication(req, res, next) {
+  // Complete the if statmenet below:
+  if (req.session.authenticated) {
+    return next();
+  } else {
+    res.status(403).json({ msg: "You're not authorized to view this page" });
+  }
+}
 
 
 
