@@ -163,8 +163,10 @@ app.post('/signin', (req, res) => {
 						
 						req.session.authenticated = true;
 						req.session.user = req.body.email;
+						req.session.save();
+
 						console.log(req.session);
-						 res.redirect("/home");
+						// res.redirect("/home");
       			//	res.redirect("/shop");
 					
 					//	res.status(200).json('session set with '+req.sessionID)
