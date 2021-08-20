@@ -167,7 +167,13 @@ app.post('/signin', (req, res) => {
 						req.session.save();
 
 						console.log(req.session);
-						req.session.save();
+						 req.session.save((err) => {
+        if (err) {
+            return next(err);
+        }
+
+        res.status(200).send('OK');
+    });
 						// res.redirect("/home");
       			//	res.redirect("/shop");
 					
