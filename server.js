@@ -209,10 +209,10 @@ app.get('/' , (req, res) => {
 function ensureAuthentication(req, res, next) {
 	console.log(req.session);
   // Complete the if statmenet below:
-  if (req.session.authenticated) {
+  if (!req.session.authenticated) {
     return next();
   } else {
-    res.status(403).json({ msg: "You're not authorized to view this page" });
+    res.status(200).json({ msg: "Already signind in" });
   }
 }
 
