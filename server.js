@@ -6,6 +6,7 @@ const knex = require('knex');
 const { response } = require('express');
 var session = require('express-session');
 
+
 //const baseURL = "http://localhost:3001/"
 
 const db = knex({
@@ -75,7 +76,7 @@ const database = {
 }
 
 const app = express();
-
+ app.use(require('cors')());
 
 app.use(cors({
     origin: '*'
@@ -128,7 +129,7 @@ const redirectlogin = (req, res) => {
 
 
 
-app.post('/signin',cors(), (req, res) => {
+app.post('/signin',require('cors'), (req, res) => {
 	//req.session = req.body.email;
 	const user = "11111";
 	  //userId=req.session.userid;
@@ -185,7 +186,7 @@ app.post('/signin',cors(), (req, res) => {
 
 
 
-app.get('/' ,cors(), (req, res) => {
+app.get('/' ,require('cors'), (req, res) => {
 	
 
 	console.log("inside and session userid " + req.session.authenticated);
