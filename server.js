@@ -6,7 +6,6 @@ const knex = require('knex');
 const { response } = require('express');
 var session = require('express-session');
 
-
 //const baseURL = "http://localhost:3001/"
 
 const db = knex({
@@ -98,11 +97,13 @@ app.use(session({
 
 }))
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+
+app.use((req, res,next) => {
+		req.session;
+	//console.log("inside beginning req seeion -----------"+req.session);
+
+	next();
+})
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -131,7 +132,7 @@ app.post('/signin', (req, res) => {
 	  //userId=req.session.userid;
 	//req.session.userid = user;
 
-	console.log("sess is"+sess);
+	
        // console.log(req.session)
        // res.send(`Hey there, welcome <a href=\'/logout'>click to logout</a>`);
     
@@ -162,8 +163,7 @@ app.post('/signin', (req, res) => {
 						
 						req.session.authenticated = true;
 						req.session.user = req.body.email;
-						
-						//req.session.save();
+						req.session.save();
 
 						console.log(req.session);
 						// res.redirect("/home");
