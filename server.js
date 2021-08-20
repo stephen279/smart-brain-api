@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
 const { response } = require('express');
-
 var session = require('express-session');
 
 //const baseURL = "http://localhost:3001/"
@@ -87,8 +86,7 @@ app.use(session({
   cookie: {
     maxAge: 24 * 60 * 60 * 365 * 1000
 	},
-   saveUninitialized: false,
-    store,
+  
 
 }))
 
