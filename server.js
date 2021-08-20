@@ -76,11 +76,10 @@ const database = {
 }
 
 const app = express();
- app.use(require('cors')());
+ var cors = require('cors');
 
-app.use(cors({
-    origin: 'https://smart-brain-new1.herokuapp.com/',' https://protected-gorge-67490.herokuapp.com/signin',
-}));
+app.use(cors());
+
 app.options('https://smart-brain-new1.herokuapp.com/',' https://protected-gorge-67490.herokuapp.com/signin', cors()) // include before other routes
 app.use(bodyParser.json());
 app.set('trust proxy', 1)
@@ -97,7 +96,7 @@ app.use(session({
   
 
 }))
-app.options('https://smart-brain-new1.herokuapp.com/', cors()) // include before other routes
+//app.options('https://smart-brain-new1.herokuapp.com/', cors()) // include before other routes
 
 
 
@@ -129,7 +128,9 @@ const redirectlogin = (req, res) => {
 
 
 
-app.post('/signin',require('cors'), (req, res) => {
+app.post('/signin', (req, res) => {
+	
+//	Access - Control - Allow - Origin: '*';
 	//req.session = req.body.email;
 	const user = "11111";
 	  //userId=req.session.userid;
@@ -186,7 +187,7 @@ app.post('/signin',require('cors'), (req, res) => {
 
 
 
-app.get('/' ,require('cors'), (req, res) => {
+app.get('/' , (req, res) => {
 	
 
 	console.log("inside and session userid " + req.session.authenticated);
