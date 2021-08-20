@@ -100,14 +100,7 @@ app.use(session({
 	   path    : 'https://smart-brain-new1.herokuapp.com/',
     httpOnly: false,
     maxAge: 24 * 60 * 60 * 365 * 1000
-	}, store: new redisStore({
-        host: 'redis-17653.c243.eu-west-1-3.ec2.cloud.redislabs.com:17653',
-		//  port: '6379',
-		port: '17653',
-        db: smart1,
-        pass: '',
-    })
-	
+	}, 
   
 
 }))
