@@ -96,7 +96,7 @@ app.use(session({
     httpOnly: false,
     maxAge: 24 * 60 * 60 * 365 * 1000
 	},
-   store: new RedisStore({ client: redisClient ,ttl: 86400}), 
+  // store: new RedisStore({ client: redisClient ,ttl: 86400}), 
 
 }))
 
