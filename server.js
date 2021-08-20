@@ -134,7 +134,7 @@ app.post('/signin',  (req, res) => {
 
 	//console.log("on sign in session1 user set --------"+req.session.id);
 
-
+console.log("session inside /signin"+req.session.authenticated);
 
 
 	 if (!req.session.authenticated) {
@@ -168,7 +168,7 @@ app.post('/signin',  (req, res) => {
 						req.session.user = req.body.email;
 					
 
-						console.log("session inside /signin"+req.session);
+						console.log("session inside /signin after getting login details"+req.session);
 						req.session.save();
 						// res.redirect("/home");
       			//	res.redirect("/shop");
