@@ -99,7 +99,7 @@ app.use(session({
 
 
 app.use((req, res,next) => {
-		req.session;
+	let  {sess} = req.session;
 	//console.log("inside beginning req seeion -----------"+req.session);
 
 	next();
@@ -132,7 +132,7 @@ app.post('/signin', (req, res) => {
 	  //userId=req.session.userid;
 	//req.session.userid = user;
 
-	
+	console.log("sess is" + sess);
        // console.log(req.session)
        // res.send(`Hey there, welcome <a href=\'/logout'>click to logout</a>`);
     
@@ -162,11 +162,12 @@ app.post('/signin', (req, res) => {
 					//	console.log("sessionuserid end set --------" + req.session.userid);
 						
 						req.session.authenticated = true;
-						req.session.user = req.body.email;
+						sess.authenticated = true;
+						sess.user = req.body.email;
 						
 						//req.session.save();
 
-						console.log(req.session);
+						console.log(sess);
 						// res.redirect("/home");
       			//	res.redirect("/shop");
 					
@@ -190,7 +191,7 @@ app.post('/signin', (req, res) => {
 app.get('/' , (req, res) => {
 	
 
-	console.log("inside and session userid " + req.session.authenticated);
+	console.log("inside and session userid " + sess);
 
 	//session = req.session;
 	//session.userid = "stephennew";
