@@ -6,7 +6,6 @@ const knex = require('knex');
 const { response } = require('express');
 var session = require('express-session');
 
-
 //const baseURL = "http://localhost:3001/"
 
 const db = knex({
@@ -76,23 +75,26 @@ const database = {
 }
 
 const app = express();
- var cors = require('cors');
 
-app.use(cors());
 
+app.use(cors({
+    origin: '*'
+}));
+app.options('*', cors()) // include before other routes
 app.use(bodyParser.json());
 app.set('trust proxy', 1)
-app.use(session({ secret: "f4z4gs$Gcg",
-    cookie: { maxAge: 300000000, secure: true, sameSite: "none" },
-    saveUninitialized: false,
-    resave: false,
-   // store,
-	
+app.use(session({
+  secret: 'secret',
+  resave: false,
+  secure: false,
+	cookie: {
+	   path    : '/',
+    httpOnly: false,
+    maxAge: 24 * 60 * 60 * 365 * 1000
+	},
   
 
 }))
-//app.options('https://smart-brain-new1.herokuapp.com/', cors()) // include before other routes
-
 
 
 app.use((req, res,next) => {
@@ -124,8 +126,6 @@ const redirectlogin = (req, res) => {
 
 
 app.post('/signin', (req, res) => {
-	
-//	Access - Control - Allow - Origin: '*';
 	//req.session = req.body.email;
 	const user = "11111";
 	  //userId=req.session.userid;
