@@ -132,7 +132,7 @@ app.post('/signin', (req, res) => {
 	  //userId=req.session.userid;
 	//req.session.userid = user;
 
-	console.log("sess is" + sess);
+	console.log("sess is"+sess);
        // console.log(req.session)
        // res.send(`Hey there, welcome <a href=\'/logout'>click to logout</a>`);
     
@@ -161,13 +161,12 @@ app.post('/signin', (req, res) => {
 						//console.log("sessionID end set --------" + req.sessionID);
 					//	console.log("sessionuserid end set --------" + req.session.userid);
 						
-					//	req.session.authenticated = true;
-						//sess.authenticated = true;
-						//sess.user = req.body.email;
+						req.session.authenticated = true;
+						req.session.user = req.body.email;
 						
 						//req.session.save();
 
-						console.log(sess);
+						console.log(req.session);
 						// res.redirect("/home");
       			//	res.redirect("/shop");
 					
@@ -191,7 +190,7 @@ app.post('/signin', (req, res) => {
 app.get('/' , (req, res) => {
 	
 
-	console.log("inside and session userid " + sess);
+	console.log("inside and session userid " + req.session.authenticated);
 
 	//session = req.session;
 	//session.userid = "stephennew";
