@@ -163,7 +163,7 @@ app.post('/signin', (req, res) => {
 						
 						req.session.authenticated = true;
 						sess.authenticated = true;
-						sess.user = req.body.email;
+						//sess.user = req.body.email;
 						
 						//req.session.save();
 
