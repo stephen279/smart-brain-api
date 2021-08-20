@@ -138,6 +138,14 @@ app.post('/signin',  (req, res) => {
     
 
 	//console.log("on sign in session1 user set --------"+req.session.id);
+
+
+
+
+	 if (!req.session.authenticated) {
+  
+ 
+
 	console.log("inside signinhh");
 	db.select('email', 'hash')
 		.from('logins')
@@ -181,6 +189,11 @@ app.post('/signin',  (req, res) => {
 			}
 		})
 		.catch(err => res.status(400).json('wrong password credentials'));
+	}
+
+	  else {
+    res.status(200).json({ msg: "Already signind in" });
+  }
 	
 })
 
