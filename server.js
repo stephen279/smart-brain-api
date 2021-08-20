@@ -181,7 +181,7 @@ app.post('/signin', (req, res) => {
 
 
 app.get('/', ensureAuthentication , (req, res) => {
-	console.log(req.session)
+	
 	console.log("sessionID beginning set --------"+req.sessionID);
 	console.log("on home session object " + req.session.id);
 	console.log("inside and session userid " + req.session.userid);
@@ -206,6 +206,7 @@ app.get('/', ensureAuthentication , (req, res) => {
 });
 
 function ensureAuthentication(req, res, next) {
+	console.log(req.session);
   // Complete the if statmenet below:
   if (req.session.authenticated) {
     return next();
