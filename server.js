@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
 const { response } = require('express');
-const store = new session.MemoryStore();
+
 var session = require('express-session');
 
 //const baseURL = "http://localhost:3001/"
