@@ -81,7 +81,7 @@ const app = express();
 app.use(cors({
     origin: '*'
 }));
-app.options('*', cors()) // include before other routes
+app.options('https://smart-brain-new1.herokuapp.com/', cors()) // include before other routes
 app.use(bodyParser.json());
 app.set('trust proxy', 1)
 app.use(session({
@@ -97,7 +97,7 @@ app.use(session({
   
 
 }))
-app.options('*', cors()) // include before other routes
+app.options('https://smart-brain-new1.herokuapp.com/', cors()) // include before other routes
 
 
 
