@@ -86,7 +86,7 @@ app.use(session({
   resave: false,
   secure: false,
 	cookie: {
-	   path    : '/',
+	   path    : 'https://smart-brain-new1.herokuapp.com/',
     httpOnly: false,
     maxAge: 24 * 60 * 60 * 365 * 1000
 	}, store: new redisStore({
