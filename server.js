@@ -5,6 +5,7 @@ const cors = require('cors');
 const knex = require('knex');
 const { response } = require('express');
 var session = require('express-session');
+var sessi = req.session;
 
 //const baseURL = "http://localhost:3001/"
 
@@ -123,7 +124,7 @@ const redirectlogin = (req, res) => {
 
 app.post('/signin',  (req, res) => {
 	//req.session = req.body.email;
-	console.log("session inside /signin and checking req.session before login"+req.session.sessionID);
+	console.log("session inside /signin and checking req.session before login"+sessi);
 	  //userId=req.session.userid;
 	//req.session.userid = user;
 
