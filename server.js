@@ -125,7 +125,7 @@ const redirectlogin = (req, res) => {
 
 
 
-app.post('/signin', ensureAuthentication, (req, res) => {
+app.post('/signin', (req, res) => {
 	//req.session = req.body.email;
 	const user = "11111";
 	  //userId=req.session.userid;
@@ -190,7 +190,7 @@ app.get('/' , (req, res) => {
 	//session = req.session;
 	//session.userid = "stephennew";
 	
-	if (req.session.userid) {
+	if (req.session.authenticated) {
 		//res.redirect('/signin')
 		//res.send("session");
 		//res.send("session ok" + req.session.userid + " ");
