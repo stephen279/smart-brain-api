@@ -91,7 +91,7 @@ app.use(session({
     httpOnly: false,
     maxAge: 24 * 60 * 60 * 365 * 1000
 	},
-	store,
+	
   
 
 }))
