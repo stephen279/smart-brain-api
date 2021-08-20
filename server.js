@@ -5,6 +5,7 @@ const cors = require('cors');
 const knex = require('knex');
 const { response } = require('express');
 var session = require('express-session');
+var redisStore = require('connect-redis')(session);
 
 //const baseURL = "http://localhost:3001/"
 
@@ -91,7 +92,13 @@ app.use(session({
 	   path    : '/',
     httpOnly: false,
     maxAge: 24 * 60 * 60 * 365 * 1000
-	},
+	}, store: new redisStore({
+        host: 'redis-17653.c243.eu-west-1-3.ec2.cloud.redislabs.com:17653',
+		//  port: '6379',
+		port: '17653',
+        db: smart1,
+        pass: '',
+    })
 	
   
 
