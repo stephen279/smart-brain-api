@@ -99,7 +99,7 @@ app.use(session({
 
 
 app.use((req, res,next) => {
-		req.session;
+		console.log(req.session);
 	//console.log("inside beginning req seeion -----------"+req.session);
 
 	next();
@@ -170,7 +170,7 @@ app.post('/signin', (req, res) => {
       			//	res.redirect("/shop");
 					
 					//	res.status(200).json('session set with '+req.sessionID)
-						res.json(user[0]);
+						res.json(user[0]+req.session);
 					
 					})
 					.catch(err => res.status(400).json('unable to get user and no seesion set '+req.session.user))
