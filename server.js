@@ -86,7 +86,8 @@ app.set('trust proxy', 1)
 app.use(session({
   secret: 'secret',
   resave: false,
-  secure: false,
+	secure: false,
+  sameSite: true,
 	cookie: {
 	   path    : '/',
     httpOnly: false,
