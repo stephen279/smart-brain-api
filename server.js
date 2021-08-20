@@ -87,7 +87,7 @@ app.use(session({
   secret: 'secret',
   resave: false,
 	secure: false,
-  sameSite: true,
+  sameSite: false,
 	cookie: {
 	   path    : '/',
     httpOnly: false,
