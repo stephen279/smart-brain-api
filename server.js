@@ -80,7 +80,8 @@ const app = express();
 
 const cors = require('cors');
 app.use(cors({
-    origin: '*'
+	origin: '*',
+	 methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 }));
 
 
