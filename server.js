@@ -5,6 +5,7 @@ const cors = require('cors');
 const knex = require('knex');
 const { response } = require('express');
 var session = require('express-session');
+let sess = req.session;
 
 //const baseURL = "http://localhost:3001/"
 
@@ -99,7 +100,7 @@ app.use(session({
 
 
 app.use((req, res,next) => {
-	let  {sess} = req.session;
+	
 	//console.log("inside beginning req seeion -----------"+req.session);
 
 	next();
