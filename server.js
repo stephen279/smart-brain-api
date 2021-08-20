@@ -80,7 +80,7 @@ const app = express();
 
 const cors = require('cors');
 app.use(cors({
-	origin: '*',
+	origin: 'https://protected-gorge-67490.herokuapp.com/signin ',
 	 methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 }));
 
