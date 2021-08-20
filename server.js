@@ -98,12 +98,7 @@ app.use(session({
 }))
 
 
-app.use((req, res,next) => {
-		console.log(req.session);
-	//console.log("inside beginning req seeion -----------"+req.session);
 
-	next();
-})
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
