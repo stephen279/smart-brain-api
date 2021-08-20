@@ -162,7 +162,7 @@ app.post('/signin', ensureAuthentication, (req, res) => {
 						
 						req.session.authenticated = true;
 						req.session.user = req.body.email;
-						
+						console.log(req.session);
       			//	res.redirect("/shop");
 					
 					//	res.status(200).json('session set with '+req.sessionID)
