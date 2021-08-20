@@ -87,7 +87,9 @@ app.use(session({
   secret: 'secret',
   resave: false,
   secure: false,
-  cookie: {
+	cookie: {
+	   path    : '/',
+    httpOnly: false,
     maxAge: 24 * 60 * 60 * 365 * 1000
 	},
   
@@ -160,7 +162,7 @@ app.post('/signin', (req, res) => {
 						
 						req.session.authenticated = true;
 						req.session.user = req.body.email;
-						 console.log(req.session);
+						
       			//	res.redirect("/shop");
 					
 					//	res.status(200).json('session set with '+req.sessionID)
