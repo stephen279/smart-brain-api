@@ -98,6 +98,12 @@ app.use(session({
 }))
 
 
+var corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+
 app.use((req, res,next) => {
 		req.session;
 	//console.log("inside beginning req seeion -----------"+req.session);
@@ -126,7 +132,7 @@ const redirectlogin = (req, res) => {
 
 
 
-app.post('/signin', (req, res) => {
+app.post('/signin',cors(corsOptions), (req, res) => {
 	//req.session = req.body.email;
 	const user = "11111";
 	  //userId=req.session.userid;
