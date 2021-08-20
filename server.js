@@ -76,10 +76,11 @@ const database = {
 
 const app = express();
 
-const cors = require('cors');
+
 app.use(cors({
     origin: '*'
 }));
+app.options('*', cors()) // include before other routes
 app.use(bodyParser.json());
 app.set('trust proxy', 1)
 app.use(session({
