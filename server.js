@@ -5,9 +5,6 @@ const cors = require('cors');
 const knex = require('knex');
 const { response } = require('express');
 var session = require('express-session');
-const redis = require('redis');
-let RedisStore = require('connect-redis')(session);
-let redisClient = redis.createClient();
 
 //const baseURL = "http://localhost:3001/"
 
@@ -89,14 +86,13 @@ app.set('trust proxy', 1)
 app.use(session({
   secret: 'secret',
   resave: false,
-	secure: false,
-  sameSite: false,
+  secure: false,
 	cookie: {
 	   path    : '/',
     httpOnly: false,
     maxAge: 24 * 60 * 60 * 365 * 1000
 	},
-  // store: new RedisStore({ client: redisClient ,ttl: 86400}), 
+  
 
 }))
 
@@ -189,7 +185,7 @@ app.post('/signin', (req, res) => {
 app.get('/' , (req, res) => {
 	
 
-	console.log("inside and session authenticated " + req.session.authenticated);
+	console.log("inside and session userid " + req.session.authenticated);
 
 	//session = req.session;
 	//session.userid = "stephennew";
