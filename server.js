@@ -1,11 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
-
+const cors = require('cors');
 const knex = require('knex');
 const { response } = require('express');
 var session = require('express-session');
-var redisStore = require('connect-redis')(session);
+
 
 //const baseURL = "http://localhost:3001/"
 
@@ -78,18 +78,10 @@ const database = {
 const app = express();
 
 
-const cors = require('cors');
 app.use(cors({
-
-	  "origin": "*",
-  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-  "preflightContinue": false,
-  "optionsSuccessStatus": 204
+    origin: '*'
 }));
-
-
-
-
+app.options('*', cors()) // include before other routes
 app.use(bodyParser.json());
 app.set('trust proxy', 1)
 app.use(session({
@@ -97,10 +89,11 @@ app.use(session({
   resave: false,
   secure: false,
 	cookie: {
-	   path    : 'https://smart-brain-new1.herokuapp.com/',
+	   path    : '/',
     httpOnly: false,
     maxAge: 24 * 60 * 60 * 365 * 1000
-	}, 
+	},
+	
   
 
 }))
@@ -171,7 +164,10 @@ app.post('/signin', (req, res) => {
 						
 						req.session.authenticated = true;
 						req.session.user = req.body.email;
-			
+						req.session.save();
+
+						console.log(req.session);
+						req.session.save();
 						// res.redirect("/home");
       			//	res.redirect("/shop");
 					
