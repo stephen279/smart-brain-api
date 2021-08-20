@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
-const cors = require('cors');
+
 const knex = require('knex');
 const { response } = require('express');
 var session = require('express-session');
@@ -78,10 +78,7 @@ const database = {
 const app = express();
 
 
-app.use(cors({
-    origin: '*'
-}));
-app.options('*', cors()) // include before other routes
+
 app.use(bodyParser.json());
 app.set('trust proxy', 1)
 app.use(session({
