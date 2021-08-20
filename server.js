@@ -126,7 +126,7 @@ const redirectlogin = (req, res) => {
 
 
 
-app.post('/signin', ensureAuthentication (req, res) => {
+app.post('/signin',  (req, res) => {
 	//req.session = req.body.email;
 	const user = "11111";
 	  //userId=req.session.userid;
