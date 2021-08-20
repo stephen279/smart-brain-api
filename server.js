@@ -97,10 +97,6 @@ app.use(session({
 
 }))
 
-app.use(){
-	console.log(req.session);
-}
-
 
 
 
@@ -127,7 +123,7 @@ const redirectlogin = (req, res) => {
 
 app.post('/signin',  (req, res) => {
 	//req.session = req.body.email;
-	console.log("session inside /signin and checking req.session before login"+req.session.sessionID);
+	console.log("session inside /signin and checking req.session before login"+req.session);
 	  //userId=req.session.userid;
 	//req.session.userid = user;
 
@@ -167,13 +163,12 @@ console.log("session inside /signin"+req.session.authenticated);
 						
 						//console.log("sessionID end set --------" + req.sessionID);
 					//	console.log("sessionuserid end set --------" + req.session.userid);
-						console.log("session inside /signin and checking req.session after login pass "+req.session.sessionID);
 						
 						req.session.authenticated = true;
 						req.session.user = req.body.email;
 					
 
-					
+						console.log("session inside /signin after getting login details"+req.session);
 						req.session.save();
 						// res.redirect("/home");
       			//	res.redirect("/shop");
