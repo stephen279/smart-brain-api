@@ -79,9 +79,9 @@ const app = express();
  app.use(require('cors')());
 
 app.use(cors({
-    origin: '*'
+    origin: 'https://smart-brain-new1.herokuapp.com/',' https://protected-gorge-67490.herokuapp.com/signin',
 }));
-app.options('https://smart-brain-new1.herokuapp.com/', cors()) // include before other routes
+app.options('https://smart-brain-new1.herokuapp.com/',' https://protected-gorge-67490.herokuapp.com/signin', cors()) // include before other routes
 app.use(bodyParser.json());
 app.set('trust proxy', 1)
 app.use(session({
