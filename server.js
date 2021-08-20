@@ -184,8 +184,7 @@ app.post('/signin', (req, res) => {
 
 app.get('/', ensureAuthentication , (req, res) => {
 	
-	console.log("sessionID beginning set --------"+req.sessionID);
-	console.log("on home session object " + req.session.id);
+
 	console.log("inside and session userid " + req.session.userid);
 
 	//session = req.session;
