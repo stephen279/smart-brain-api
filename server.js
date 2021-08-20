@@ -170,7 +170,7 @@ app.post('/signin', (req, res) => {
       			//	res.redirect("/shop");
 					
 					//	res.status(200).json('session set with '+req.sessionID)
-						res.json(user[0]+req.session);
+						res.json(user[0]);
 					
 					})
 					.catch(err => res.status(400).json('unable to get user and no seesion set '+req.session.user))
