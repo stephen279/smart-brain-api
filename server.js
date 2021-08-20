@@ -83,7 +83,6 @@ app.use(session({
   secret: 'secret',
   resave: false,
   secure: false,
-  
   cookie: {
     maxAge: 24 * 60 * 60 * 365 * 1000
   }
@@ -175,7 +174,7 @@ app.post('/signin', (req, res) => {
 
 
 
-app.get('/' ,authorizedUser,(req, res) => {
+app.get('/', (req, res) => {
 	//console.log(req.session)
 	console.log("sessionID beginning set --------"+req.sessionID);
 	console.log("on home session object " + req.session.id);
@@ -183,11 +182,11 @@ app.get('/' ,authorizedUser,(req, res) => {
 
 	//session = req.session;
 	//session.userid = "stephennew";
-	/*
+	
 	if (req.session.userid) {
 		//res.redirect('/signin')
 		//res.send("session");
-		res.send("session ok" + req.session.userid + " ");
+		//res.send("session ok" + req.session.userid + " ");
 		res.status(200).json('session');
 		//console.log(res.send("session ok" + req.session.userid + " "));
 	} else {
@@ -196,23 +195,20 @@ app.get('/' ,authorizedUser,(req, res) => {
 		//res.send("session NO" + req.session.userid + " ");
 		//}
 	
-	}*/
-
-	// res.render("/", { user: req.session.user });
-		res.send("session ok" +req.session.user + " ");
+	}
 
 });
 
 
 function authorizedUser(req, res, next) {
   // Check for the authorized property within the session
-	if (req.session.authenticated) {
+	if (req.session.authorized) {
 		// next middleware function is invoked
-		next();
+		res.next();
 	}
   else {
     res.status(403).json({ msg: "You're not authorized to view this page" });
-	  
+	  }
 	}
 };
 
