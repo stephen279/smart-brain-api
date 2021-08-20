@@ -162,7 +162,7 @@ app.post('/signin', (req, res) => {
 					//	console.log("sessionuserid end set --------" + req.session.userid);
 						
 					//	req.session.authenticated = true;
-						sess.authenticated = true;
+						//sess.authenticated = true;
 						//sess.user = req.body.email;
 						
 						//req.session.save();
