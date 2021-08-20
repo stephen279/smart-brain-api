@@ -5,6 +5,9 @@ const cors = require('cors');
 const knex = require('knex');
 const { response } = require('express');
 var session = require('express-session');
+const redis = require('redis');
+let RedisStore = require('connect-redis')(session);
+let redisClient = redis.createClient();
 
 //const baseURL = "http://localhost:3001/"
 
@@ -93,9 +96,7 @@ app.use(session({
     httpOnly: false,
     maxAge: 24 * 60 * 60 * 365 * 1000
 	},
-   store: new MemoryStore({
-      checkPeriod: 86400000 // prune expired entries every 24h
-    }),
+   store: new RedisStore({ client: redisClient ,ttl: 86400}), 
 
 }))
 
