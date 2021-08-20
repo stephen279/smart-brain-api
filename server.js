@@ -82,15 +82,11 @@ app.use(cors());
 
 app.use(bodyParser.json());
 app.set('trust proxy', 1)
-app.use(session({
-  secret: 'secret',
-  resave: false,
-  secure: false,
-	cookie: {
-	   path    : '/',
-    httpOnly: false,
-    maxAge: 24 * 60 * 60 * 365 * 1000
-	},
+app.use(session({ secret: "f4z4gs$Gcg",
+    cookie: { maxAge: 300000000, secure: true, sameSite: "none" },
+    saveUninitialized: false,
+    resave: false,
+    store,
 	
   
 
