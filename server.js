@@ -98,6 +98,10 @@ app.use(session({
 
 }))
 
+app.use(){
+	console.log(req.session);
+}
+
 
 
 
@@ -124,7 +128,7 @@ const redirectlogin = (req, res) => {
 
 app.post('/signin',  (req, res) => {
 	//req.session = req.body.email;
-	console.log("session inside /signin and checking req.session before login"+sessi);
+	console.log("session inside /signin and checking req.session before login"+req.session.sessionID);
 	  //userId=req.session.userid;
 	//req.session.userid = user;
 
