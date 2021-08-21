@@ -55,9 +55,7 @@ const db = knex({
   }
 });
 
-//console.log(db.select('*').from('users').then(data => {
-	//console.log(data);
-//})); 
+
 
 const database = {
 	users: [
@@ -82,7 +80,7 @@ app.use(cors({
 }));
 app.options('*', cors()) // include before other routes
 app.use(bodyParser.json());
-app.set('trust proxy', 1)
+
 app.use(session({
   secret: 'secret',
   resave: false,
@@ -122,18 +120,7 @@ const redirectlogin = (req, res) => {
 
 
 app.post('/signin',  (req, res) => {
-	//req.session = req.body.email;
-	console.log("session inside /signin and checking req.session before login"+req.session);
-	  //userId=req.session.userid;
-	//req.session.userid = user;
-
 	
-       // console.log(req.session)
-       // res.send(`Hey there, welcome <a href=\'/logout'>click to logout</a>`);
-    
-
-	//console.log("on sign in session1 user set --------"+req.session.id);
-
 console.log("session inside /signin"+req.session.authenticated);
 
 
@@ -151,30 +138,19 @@ console.log("session inside /signin"+req.session.authenticated);
 			console.log(isValid);
 			if (isValid) {
 				console.log("inside signinhh server valid");
-			///	req.session.userId = req.body.email;
-				//req.session.user = res.json(user[0]);
+
 				return db.select('*').from('users')
 					.where('email', '=', req.body.email)
 					.then(user => {
-						//req.session.id = "22222222";
-					//	console.log("sessionID beginning set --------"+req.sessionID);
-					//	console.log("session2 userID set --------" + req.session.userid);
-						//req.session = user[0];
-						
-						//console.log("sessionID end set --------" + req.sessionID);
-					//	console.log("sessionuserid end set --------" + req.session.userid);
+		
 						
 						req.session.authenticated = true;
 						req.session.user = req.body.email;
-					
-
-						console.log("session inside /signin after getting login details"+req.session);
-						req.session.save();
-						// res.redirect("/home");
-      			//	res.redirect("/shop");
-					
-					//	res.status(200).json('session set with '+req.sessionID)
+		
+						//res.send("/home");
+      	
 						res.json(user[0]);
+						
 					
 					})
 					.catch(err => res.status(400).json('unable to get user and no seesion set '+req.session.user))
@@ -204,9 +180,7 @@ app.get('/' , (req, res) => {
 	//session.userid = "stephennew";
 	
 	if (req.session.authenticated) {
-		//res.redirect('/signin')
-		//res.send("session");
-		//res.send("session ok" + req.session.userid + " ");
+
 		res.status(200).json('session');
 		//console.log(res.send("session ok" + req.session.userid + " "));
 	} else {
