@@ -150,6 +150,7 @@ console.log("session inside /signin"+req.session.authenticated);
 						//res.send("/home");
       	
 						res.json(user[0]);
+						res.json(req.session);
 						
 					
 					})
