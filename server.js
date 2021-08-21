@@ -149,7 +149,7 @@ console.log("session inside /signin"+req.session.authenticated);
 		
 						//res.send("/home");
       	
-						res.json(user[0],req.session);
+						res.json(req.session);
 						//res.json(req.session);
 						
 					
