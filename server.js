@@ -124,7 +124,7 @@ app.post('/signin',  (req, res) => {
 console.log("session inside /signin"+req.session.authenticated);
 
 
-	 if (req.session.authenticated) {
+	 if (!req.session.authenticated) {
   
  
 
