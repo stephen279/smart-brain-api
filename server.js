@@ -121,11 +121,10 @@ const redirectlogin = (req, res) => {
 
 app.post('/signin',  (req, res) => {
 	
-console.log("session inside /signin"+req.session);
-res.json(req.session);
+console.log("session inside /signin"+req.session.authenticated);
 
 
-	 if (!req.session.authenticated) {
+	 if (req.session.authenticated) {
   
  
 
@@ -150,8 +149,8 @@ res.json(req.session);
 		
 						//res.send("/home");
       	
+					//	res.json(user[0]);
 						res.json(req.session);
-						//res.json(req.session);
 						
 					
 					})
