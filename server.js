@@ -121,7 +121,7 @@ const redirectlogin = (req, res) => {
 
 app.post('/signin',  (req, res) => {
 	
-console.log("session inside /signin"+req.session.authenticated);
+console.log("session inside /signin"+res.json(req.session););
 
 
 	 if (!req.session.authenticated) {
