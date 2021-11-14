@@ -5,6 +5,9 @@ const cors = require('cors');
 const knex = require('knex');
 const { response } = require('express');
 var session = require('express-session');
+var jwt = require('jsonwebtoken');
+const { json } = require('body-parser');
+
 
 //const baseURL = "http://localhost:3001/"
 
@@ -115,7 +118,19 @@ const redirectlogin = (req, res) => {
 
 }
 
+const signToken = (email) =>{
+	const jwtPayload = { email };
+	var token = jwt.sign(jwtPayload, 'JWT_SECRET');
+	
+}
 
+const createSessions = (user) => {
+	//LWT toke and return user data install package
+	const { email, id } = user;
+	var token = signToken(email);
+	return {success: 'true', userId:id, token}
+
+}
 
 
 
@@ -124,41 +139,50 @@ app.post('/signin',  (req, res) => {
 console.log("session inside /signin"+req.session.authenticated);
 
 
-	 if (!req.session.authenticated) {
-  
- 
+	if (!req.session.authenticated) {
+		 
 
 
-	db.select('email', 'hash')
-		.from('logins')
-		.where('email', '=', req.body.email)
+		db.select('email', 'hash')
+			.from('logins')
+			.where('email', '=', req.body.email)
 
-		.then((data) => {
-			const isValid = bcrypt.compareSync(req.body.password, data[0].hash);
-			console.log(isValid);
-			if (isValid) {
-				console.log("inside signinhh server valid");
+			.then((data) => {
 
-				return db.select('*').from('users')
-					.where('email', '=', req.body.email)
-					.then(user => {
+				//new line
+			
+			
+
+				const isValid = bcrypt.compareSync(req.body.password, data[0].hash);
+				console.log(isValid);
+				if (isValid) {
+					//console.log("inside signinhh server valid");
+console.log("inside signinhhtest server valid");
+					return db.select('*').from('users')
+						.where('email', '=', req.body.email)
+						.then(user => {
 		
 						
-						req.session.authenticated = true;
-						req.session.user = req.body.email;
+							req.session.authenticated = true;
+							req.session.user = req.body.email;
 		
-						//res.send("/home");
+							//res.send("/home");
+							const { email, id } = user;
+							var token = signToken(email);
       	
-						res.json(user[0]);
-						
-					
-					})
-					.catch(err => res.status(400).json('unable to get user and no seesion set '+req.session.user))
+							res.json(user[0], token);
+							console.log(user[0], token);
+							//posible fault
+							//return data.id && data.email ? createSessions(data) : Promise.reject(data);
+							//return token;
+						})
+						.catch(err => res.status(400).json('unable to get user and no seesion set ' + req.session.user))
 				
-			} else {
-				res.status(400).json('wrong Credential');
-			}
-		})
+				} else {
+					res.status(400).json('wrong Credential');
+				}
+			})
+			.then(session => res => json(session))
 		.catch(err => res.status(400).json('wrong password credentials'));
 	}
 
